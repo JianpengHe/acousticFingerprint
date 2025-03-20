@@ -1,0 +1,20 @@
+{
+  "name": "acousticfingerprint",
+  "version": "1.0.0",
+  "description": "研究声学指纹",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "dsp.js": "^1.0.1"
+  }
+}
