@@ -2,10 +2,6 @@ import * as fs from "fs";
 import * as path from "path";
 import { spawn } from "child_process";
 import { Codegen, SAMPLING_RATE, STEP } from "./Codegen";
-// 保存指纹到文件（可选）
-// 这对于调试和分析很有用
-const outputDir = path.resolve(__dirname, "../output");
-fs.mkdir(outputDir, { recursive: true }, () => {});
 // 配置路径
 const ffmpegPath = path.resolve(__dirname, "../../ffmpeg.exe");
 
@@ -39,6 +35,8 @@ export function getFingerprints(audioFilePath: string) {
         [
           "-i",
           audioFilePath,
+          "-af",
+          "pan=stereo|c0=FL|c1=FL",
           "-acodec",
           "pcm_s16le",
           "-ar",

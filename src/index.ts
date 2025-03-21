@@ -12,7 +12,6 @@
  */
 import path = require("path");
 import { getFingerprints } from "./getFingerprints";
-import * as fs from "fs";
 import { findAudioPosition } from "./findAudioPosition";
 
 /**
@@ -64,8 +63,11 @@ import { findAudioPosition } from "./findAudioPosition";
  */
 function formatTime(seconds: number): string {
   const hour = Math.floor(seconds / 3600);
-  const mins = Math.floor(seconds / 60);
+  const mins = Math.floor((seconds / 60) % 60);
   const secs = Math.floor(seconds % 60);
   const msecs = Math.floor((seconds * 1000) % 1000);
   return `${hour}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}.${msecs.toString().padStart(3, "0")}`;
 }
+
+// mkvmerge -o output.mkv --split parts:0-3,6-9 input.mkv
+// mkvmerge -o final_output.mkv output-001.mkv + output-002.mkv
